@@ -9,7 +9,20 @@ module "vpc" {
   default_vpc_route_table_id = var.default_vpc_route_table_id
   tags                       = var.tags
   env = var.env
+}
 
+module "alb" {
+  source = "https://github.com/Naresh2129/tf-module-alb.git"
+
+  for_each                   = var.alb
+  internal                   = each.value["internal"]
+  lb_type                    = each.value["lb_type"]
+  sg_ingress_cidr            = each.value["sg_ingress_cidr"]
+  vpc_id = each.value["internal"] ? local.vpc_id : var.default_vpc_id
+  subnets = each.value["internal"] ? data.aws_subnets.subnets.ids : local.app_subnets
+  tags                       = var.tags
+  env = var.env
+  sg_port = each.value["sg_port"]
 }
 
 output "vpc" {

@@ -17,7 +17,9 @@ vpc = {
     }
   }
 }
- default_vpc_id = "vpc-0e30da595cec3624a"
+
+
+default_vpc_id = "vpc-0e30da595cec3624a"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_route_table_id = "rtb-00f11a43a99b592ba"
 
@@ -30,3 +32,19 @@ tags = {
  }
 
 env = "dev"
+
+alb = {
+  public = {
+    internal = false
+    lb_type = "application"
+    sg_ingress_cidr = ["0.0.0.0/0"]
+    sg_port = 80
+  }
+
+  private = {
+    internal = true
+    lb_type = "application"
+    sg_ingress_cidr = ["172.31.0.0/16", "10.0.0.0/16"]
+    sg_port = 80
+  }
+}
