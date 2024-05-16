@@ -1,3 +1,3 @@
 output "vpc" {
-  value = module.vpc
+  value = data.aws_subnets.subnets.ids
 }
