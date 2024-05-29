@@ -80,3 +80,14 @@ module "elasticache" {
  engine_version            = each.value[" engine_version "]
 }
 
+
+module "rabbitmq" {
+  source = "https://github.com/Naresh2129/tf-module-rabbitmq.git"
+  tags            = var.tags
+  env             = var.env
+  for_each        = var.rabbitmq
+  subnet_ids = local.db_subnets
+  vpc_id                   = local.vpc_id
+  ssh_ingress_cidr          = local.app_subnets_cidr
+
+}
