@@ -22,6 +22,10 @@ vpc = {
 default_vpc_id = "vpc-0e30da595cec3624a"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_route_table_id = "rtb-00f11a43a99b592ba"
+zone_id = "Z006973935O9MJDASQHFN"
+env = "dev"
+ssh_ingress_cidr = ["172.31.19.52/32"]
+
 
 tags = {
   company_name = "ABCTech"
@@ -30,8 +34,6 @@ tags = {
   cost_center = "ecom_rs"
   created_by  = "terraform"
  }
-
-env = "dev"
 
 alb = {
   public = {
@@ -91,7 +93,13 @@ elasticache = {
 
 rabbitmq = {
   main = {
-    ssh_ingress_cidr = ["172.31.19.52/32"]
     instance_type = "t3.small"
+  }
+}
+
+apps = {
+  frontend = {
+    instance_type = "t3.micro"
+    port = 80
   }
 }
