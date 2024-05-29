@@ -108,4 +108,7 @@ module "app" {
   sg_ingress_cidr = local.app_subnets_cidr
   vpc_id = local.vpc_id
   subnet_ids = local.app_subnets
+
+  alb_name  = lookup(lookup(module.alb, "private", null), "dns_name", null)
 }
+
