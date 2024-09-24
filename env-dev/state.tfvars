@@ -1,3 +1,3 @@
-bucket = "tf-state-b74"
+bucket = "tf-state-naresh"
 key    = "dev/terraform.tfstate"
 region = "us-east-1"
