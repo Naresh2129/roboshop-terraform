@@ -23,4 +23,7 @@ vpc = {
   }
 }
 
+ default_vpc_id =  "213456789213" #we need to put default vpc id
+default_vpc_cidr = "213456625" #default vpc cidr
+default_vpc_route_table_id = "23156565" # default vpc route table id
 
